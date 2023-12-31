@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="image/img2.png" alt="Bookshelf" width="200" height="50">
+      </a>
+      </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container-1">
+        <section class="input-section">
+          <h2>Masukkan Buku</h2>
+          <form id="inputBook">
+            <div class="input">
+              <label for="inputBookTitle">Judul</label>
+              <input
+                id="inputBookTitle"
+                type="text"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookAuthor">Penulis</label>
+              <input
+                id="inputBookAuthor"
+                type="text"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookYear">Tahun</label>
+              <input
+                id="inputBookYear"
+                type="number"
+                onKeyPress="if(this.value.length==4) return false;"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookPage">Jumlah halaman</label>
+              <input
+                id="inputBookPage"
+                type="number"
+                onKeyPress="if(this.value.length==5) return false;"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookLanguage">Bahasa</label>
+              <input
+                id="inputBookLanguage"
+                type="text"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookGenre">Genre</label>
+              <select
+                class="book-genre"
+                name="bookGenre"
+                id="inputBookGenre"
+                required
+              >
+                <option value="" selected>Pilih jenis buku</option>
+                <option value="Anak-anak">Agama</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Komedi">Komedi</option>
+                <option value="Romantis">Romantis</option>
+                <option value="Horor">Horor</option>
+                <option value="etc.">etc.</option>
+              </select>
+            </div>
+            <div class="input">
+              <label for="inputBookCover">Cover Buku</label>
+              <input
+                id="inputBookCover"
+                type="text"
+              />
+            </div>
+            <div class="input-inline">
+              <label for="inputBookIsComplete">Dibaca</label>
+              <input id="inputBookIsComplete" type="checkbox" />
+            </div>
+            <button id="bookSubmit" type="submit" class="button-color-submit">
+              Masukkan Buku ke rak <span>Belum dibaca</span>
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <div class="container-2">
+        <section class="search-section box" hidden>
+          <div class="search">
+            <form id="searchMyBookshelf">
+              <input
+                type="text"
+                class="searchBook"
+                id="searchBook"
+                name=""
+              />
+              <button id="searchSubmit" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section class="dropdown box" hidden>
+          <label for="inputChooseBook"> </label>
+          <select class="choose-book" name="chooseBook" id="inputChooseBook">
+            <option value="Semua Buku">Semua</option>
+            <option value="Selesai">Selesai</option>
+            <option value="Belum Selesai">Belum</option>
+          </select>
+        </section>
+      </div>
+
+      <div class="container-3">
+        <section class="book-shelf box" id="notFinished" hidden>
+          <h2>Belum dibaca</h2>
+          <div id="unfinishedBook" class="book-list">
+          </div>
+        </section>
+
+        <section class="book-shelf box" id="finished" hidden>
+          <h2>Sudah dibaca</h2>
+          <div id="bookFinishedReading" class="book-list">
+          </div>
+        </section>
+
+        <div class="popup-delete">
+          <div class="view-delete">
+            <i class="fa fa-exclamation"></i>
+            <h1>
+              hapus ?
+            </h1>
+            <button class="btn-delete" id="btnDelete">Ya</button>
+            <button class="btn-cancel" id="btnCancel">Tidak</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-4 input-edit">
+        <section class="input-section edit-section">
+          <h2>Edit</h2>
+          <form id="editBook">
+            <div class="input">
+              <label for="inputEditTitle">Judul</label>
+              <input
+                id="inputEditTitle"
+                type="text"
+                maxlength="30"
+              />
+            </div>
+            <div class="input">
+              <label for="inputEditAuthor">Penulis</label>
+              <input
+                id="inputEditAuthor"
+                type="text"
+                maxlength="30"
+              />
+            </div>
+            <div class="input">
+              <label for="inputEditYear">Tahun</label>
+              <input
+                id="inputEditYear"
+                type="number"
+                onKeyPress="if(this.value.length==4) return false;"
+              />
+            </div>
+            <div class="input">
+              <label for="inputEditPage">Jumlah halaman</label>
+              <input
+                id="inputEditPage"
+                type="number"
+                onKeyPress="if(this.value.length==5) return false;"
+              />
+            </div>
+            <div class="input">
+              <label for="inputEditLanguage">Bahasa</label>
+              <input
+                id="inputEditLanguage"
+                type="text"
+                maxlength="30"
+              />
+            </div>
+            <div class="input">
+              <label for="inputEditGenre">Genre</label>
+              <select class="book-genre" name="bookGenre" id="inputEditGenre">
+                <option value="" selected>Pilih jenis buku</option>
+                <option value="Anak-anak">Agama</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Komedi">Komedi</option>
+                <option value="Romantis">Romantis</option>
+                <option value="Horor">Horor</option>
+                <option value="etc.">etc.</option>
+              </select>
+            </div>
+            <div class="input">
+              <label for="inputEditCover">Cover Buku</label>
+              <input
+                id="inputEditCover"
+                type="text"
+              />
+            </div>
+            <button class="btn-red" id="editCancel">Batal</button>
+            <button class="btn-green" type="submit" id="editSubmmit">
+              Simpan
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
